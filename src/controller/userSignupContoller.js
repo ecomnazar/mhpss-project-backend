@@ -10,9 +10,11 @@ exports.userSignupController = async (req, res) => {
         password
     }
     try {
-        addText(first_name + ' ' + last_name)    
-        const user = await Users.create(data)
-        res.json(user)
+        // console.log(first_name);
+        addText(first_name + ' ' + last_name)
+        // const user = await Users.create(data)
+        // res.json(user)
+        res.json('ok')
     } catch (error) {
         res.send(error)
     }
