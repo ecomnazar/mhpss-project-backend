@@ -3,6 +3,9 @@ const connectDB = require('./connection.js')
 const cors = require('cors')
 const { userSignupController } = require('./controller/userSignupContoller.js')
 const { userLoginController } = require('./controller/userLoginController.js')
+const { addText } = require('./sharp.js')
+
+
 
 const PORT = 4002
 const app = express()
@@ -22,6 +25,9 @@ app.get('/', (req, res) => {
 
 app.post('/signup', userSignupController)
 app.post('/signin', userLoginController)
+
+// add text to image
+
 
 app.listen(PORT, () => {
     console.log(`Listening at port ${PORT}`)
