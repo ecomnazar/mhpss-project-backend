@@ -1,3 +1,4 @@
+const { mailSender } = require('../mailSender');
 const Users = require('../model/usersModel');
 const { addText } = require('../sharp');
 
@@ -10,10 +11,10 @@ exports.userSignupController = async (req, res) => {
         password
     }
     try {
-        // console.log(first_name);
         addText(first_name + ' ' + last_name)
         // const user = await Users.create(data)
         // res.json(user)
+        mailSender(first_name)
         res.json('ok')
     } catch (error) {
         res.send(error)
