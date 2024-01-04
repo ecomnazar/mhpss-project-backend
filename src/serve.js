@@ -4,8 +4,7 @@ const cors = require('cors')
 const { userSignupController } = require('./controller/userSignupContoller.js')
 const { userLoginController } = require('./controller/userLoginController.js')
 const { addText } = require('./sharp.js')
-
-
+const { certificationController } = require('./controller/certificationController.js')
 
 const PORT = 4002
 const app = express()
@@ -25,6 +24,7 @@ app.get('/', (req, res) => {
 
 app.post('/signup', userSignupController)
 app.post('/signin', userLoginController)
+app.post('/certification', certificationController)
 
 // add text to image
 

@@ -1,8 +1,10 @@
 const nodemailer = require("nodemailer");
+const fs = require("fs");
+
 // pass: "atugcjnlyysfropa",
 // pass4: "yaaz myxy gdew nqnd"
 
-exports.mailSender = (name) => {
+exports.mailSender = (name, fileName) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
@@ -24,9 +26,9 @@ exports.mailSender = (name) => {
     `,
     attachments: [
       {
-        path: "./src/processed_images/cer.jpg",
-        filename: "cer.jpg",
-      }
+        path: `./src/processed_images/${fileName}.jpg`,
+        filename: `${fileName}.jpg`,
+      },
     ],
   };
 
@@ -35,6 +37,14 @@ exports.mailSender = (name) => {
       console.log(error);
     } else {
       console.log("Email sent: " + info.response);
+      try {
+        setTimeout(() => {
+          fs.unlinkSync(`./src/processed_images/${fileName}.jpg`);
+          console.log("File is deleted");
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+      }
     }
   });
 };

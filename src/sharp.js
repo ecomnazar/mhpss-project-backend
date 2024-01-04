@@ -1,6 +1,6 @@
 const sharp = require("sharp");
 
-exports.addText = (name) => {
+exports.addText = (name, fileName) => {
   const width = 900;
   const height = 500;
 
@@ -34,5 +34,5 @@ exports.addText = (name) => {
       { input: dateBuffer, left: -155, top: 325 },
     ])
     // .composite([{ input: dateBuffer, left: 20, top: 450 }])
-    .toFile(__dirname + `/processed_images/cer.jpg`);
+    .toFile(__dirname + `/processed_images/${fileName}.jpg`);
 };
