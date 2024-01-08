@@ -10,10 +10,10 @@ exports.userLoginController = async (req, res) => {
       if (match) {
         res.status(200).json(user);
       } else {
-        res.status(404).json("Wrong Password");
+        res.status(404).json("wrongpassword");
       }
     } else {
-      res.status(404).json("User not found");
+      res.status(404).json("usernotfound");
     }
   } catch (error) {}
 };

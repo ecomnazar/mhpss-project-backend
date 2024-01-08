@@ -27,6 +27,7 @@ app.get("/", (req, res) => {
 app.post("/signup", userSignupController);
 app.post("/signin", userLoginController);
 app.post("/certification", certificationController);
+app.post("/signup/update");
 
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}`);

@@ -12,7 +12,7 @@ exports.mailSender = (name, fileName) => {
     secure: false,
     auth: {
       user: "ecomnazar.me@gmail.com",
-      pass: "", // your 16 digit code
+      pass: "yaazmyxygdewnqnd", // your 16 digit code
     },
   });
   const mailOptions = {
