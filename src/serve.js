@@ -7,6 +7,9 @@ const { addText } = require("./sharp.js");
 const {
   certificationController,
 } = require("./controller/certificationController.js");
+const {
+  userSignupUpdateController,
+} = require("./controller/userSignupUpdateController.js");
 
 const PORT = 4002;
 const app = express();
@@ -27,7 +30,7 @@ app.get("/", (req, res) => {
 app.post("/signup", userSignupController);
 app.post("/signin", userLoginController);
 app.post("/certification", certificationController);
-app.post("/signup/update");
+app.patch("/signup/update", userSignupUpdateController);
 
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}`);
