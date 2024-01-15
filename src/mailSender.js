@@ -17,7 +17,7 @@ exports.mailSender = (name, fileName) => {
   });
   const mailOptions = {
     from: "ecomnazar.me@gmail.com",
-    to: "nazar.se7en@gmail.com",
+    to: name,
     subject: "Certificate from Sanly Bilim",
     text: `Hello ${name}`,
     html: `
