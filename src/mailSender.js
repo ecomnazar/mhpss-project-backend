@@ -4,7 +4,7 @@ const fs = require("fs");
 // pass: "atugcjnlyysfropa",
 // pass4: "yaaz myxy gdew nqnd"
 
-exports.mailSender = (name, fileName) => {
+exports.mailSender = (mailAddress, fileName) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
@@ -12,16 +12,16 @@ exports.mailSender = (name, fileName) => {
     secure: false,
     auth: {
       user: "ecomnazar.me@gmail.com",
-      pass: "", // your 16 digit code
+      pass: process.env.MAIL_PASS, // your 16 digit code
     },
   });
   const mailOptions = {
     from: "ecomnazar.me@gmail.com",
-    to: name,
+    to: mailAddress,
     subject: "Certificate from Sanly Bilim",
-    text: `Hello ${name}`,
+    text: `Hello ${mailAddress}`,
     html: `
-     <h1>Hello ${name}</h1>
+     <h1>Hello ${mailAddress}</h1>
      <p>This is your certificate</p>
     `,
     attachments: [
@@ -37,14 +37,14 @@ exports.mailSender = (name, fileName) => {
       console.log(error);
     } else {
       console.log("Email sent: " + info.response);
-      try {
-        setTimeout(() => {
-          fs.unlinkSync(`./src/processed_images/${fileName}.jpg`);
-          console.log("File is deleted");
-        }, 3000);
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   setTimeout(() => {
+      //     fs.unlinkSync(`./src/processed_images/${fileName}.jpg`);
+      //     console.log("File is deleted");
+      //   }, 3000);
+      // } catch (error) {
+      //   console.log(error);
+      // }
     }
   });
 };
